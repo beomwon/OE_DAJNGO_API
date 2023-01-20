@@ -27,7 +27,7 @@ from osyulraeng import settings
 @api_view(['POST'])
 def login(request):
     # print("hi: " , settings.LOGIN_API_ADDRESS)
-    result = Response(requests.post(settings.LOGIN_API_ADDRESS, data={'manager_id': request.data['user_id'], 'password': request.data['password']})).status_code
+    result = Response(requests.post(settings.LOGIN_API_ADDRESS, headers={'manager_id': request.data['user_id'], 'password': request.data['password']})).status_code
     if result == 200:
         for user in eval(requests.get(settings.OE_WORKERS_API_ADDRESS, data={'key': settings.OE_WORKERS_API_KEY}).text)['list']:
             # print('user=',user)
