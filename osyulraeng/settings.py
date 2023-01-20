@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#ibh%2j8e*%t4+ws(*%abb^1%l=9%qgoiz!(@s6t$pnnph1qe+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['port-0-python-django-1jx7m2gld2xf03g.gksl2.cloudtype.app']
 # ALLOWED_HOSTS = ['192.168.0.42']
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
