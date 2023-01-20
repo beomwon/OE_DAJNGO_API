@@ -11,7 +11,7 @@ jsonschema
 Markdown
 PyJWT
 PyYAML==6.0
-QtPy @ file:///C:/ci/qtpy_1662015096047/work
+QtPy
 requests
 requests-file
 SQLAlchemy
