@@ -16,3 +16,7 @@ requests
 requests-file
 SQLAlchemy
 tqdm
+django-cors-headers
+pymysql
+mysqlclient
+requests-toolbelt
