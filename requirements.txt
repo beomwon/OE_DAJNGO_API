@@ -20,3 +20,4 @@ django-cors-headers
 pymysql
 mysqlclient
 requests-toolbelt
+django-apscheduler
