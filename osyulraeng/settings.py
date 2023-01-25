@@ -1,11 +1,12 @@
 from pathlib import Path
 import os, json
 from django.core.exceptions import ImproperlyConfigured
+from corsheaders.defaults import default_headers
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['port-0-python-django-1jx7m2gld2xf03g.gksl2.cloudtype.app']
-# ALLOWED_HOSTS = ['192.168.0.42']
+# ALLOWED_HOSTS = ['port-0-python-django-1jx7m2gld2xf03g.gksl2.cloudtype.app']
+ALLOWED_HOSTS = []
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
@@ -123,7 +124,10 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-
+CORS_ALLOW_METHODS = [ "GET", "POST", "DELETE", "PATCH", "PUT", "UPDATE", "OPTIONS"]
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "token",
+]
 # 스케줄러
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"  # Default
 SCHEDULER_DEFAULT = True
