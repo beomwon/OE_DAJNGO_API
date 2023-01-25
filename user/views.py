@@ -151,7 +151,7 @@ def deleteMustFood(request):
     return Response(status=status.HTTP_200_OK)
 
 def tokenCheck(request):
-    # token = request.COOKIES.get('jwt')
+    print(request.COOKIES.get('token'))
     token = request.headers['token']
     if not token: raise Response(status=status.HTTP_401_UNAUTHORIZED)
     try: return jwt.decode(token, settings.JWT_KEY, algorithms=['HS256'])
