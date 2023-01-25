@@ -6,7 +6,7 @@ from corsheaders.defaults import default_headers
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # ALLOWED_HOSTS = ['port-0-python-django-1jx7m2gld2xf03g.gksl2.cloudtype.app']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['port-0-python-django-1jx7m2gld2xf03g.gksl2.cloudtype.app']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
