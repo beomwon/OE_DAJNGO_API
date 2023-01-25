@@ -51,7 +51,7 @@ def login(request):
                 return response
     return Response(status=status.HTTP_401_UNAUTHORIZED)
 
-@api_view(['GET'])
+@api_view(['GET', 'OPTIONS'])
 def cookie(request):
     print('header token: ', request.headers['token'])
     payload = tokenCheck(request)
