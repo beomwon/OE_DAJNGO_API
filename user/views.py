@@ -53,7 +53,9 @@ def login(request):
 
 @api_view(['GET'])
 def cookie(request):
+    print('header token: ', request.headers['token'])
     payload = tokenCheck(request)
+    print(make_info()[payload['id']])
     return JsonResponse(make_info()[payload['id']])
 
 # filter(string__contains='pattern')
