@@ -1,11 +1,9 @@
 ## (주)비바라비다 점심메이트, 점심메뉴추천 어플리케이션 '오슐랭' 백엔드 API
 
-## Getting started
-- clone this repository using: `git clone https://github.com/beingbiplov/django-boilerplate.git`
-- Move into the directory: `cd django_boilerplate`
-- Create a virtual environment and activate it. 
-- Install dependencies with: `pip install -r requirements.txt`
-- Rename your project with: `python manage.py rename <current_project_name> <new_project_name>`
+## 프로젝트
+- AWS와 CLOUDTYPE서버를 이용하여 DB를 관리하고, BACKEND를 배포함.
+- 팀원 추천 알고리즘은 '1. 랜덤, 2. 부서별, 3. 가장 팀이 적게된 인원' 3가지의 알고리즘이다.
+- 메뉴 추천 알고리즘은 '1. 랜덤, 2. 팀원들의 호/불 음식 가중치' 2가지의 알고리즘이다. (다음 버전 구현 예정) 
  
 ## License
-This project is licensed BEOMWON,
+This project is licensed BEOMWON
