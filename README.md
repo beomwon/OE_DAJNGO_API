@@ -1,4 +1,4 @@
-# (주)비바라비다 점심메이트, 점심메뉴 추천 어플리케이션 '오슐랭' 백엔드 API
+## (주)비바라비다 점심메이트, 점심메뉴추천 어플리케이션 '오슐랭' 백엔드 API
 
 ## Getting started
 - clone this repository using: `git clone https://github.com/beingbiplov/django-boilerplate.git`
