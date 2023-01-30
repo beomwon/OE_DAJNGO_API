@@ -191,7 +191,10 @@ def preferenceMenu(data):
             alpha = store_category_counts[team_i][store_category.index(store['category'])]
             if random.randint(1, 10) > 5+alpha:
                 store_id_list.append(str(store['id']))
-
+        
+        if len(store_id_list) < 4:
+            store_id_list += random.sample(range(len(store_list)-1), 4)
+            
         res[team_i] += random.sample(store_id_list, 4 - len(res[team_i]))
 
     return res
