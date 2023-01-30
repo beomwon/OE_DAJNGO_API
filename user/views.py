@@ -146,7 +146,7 @@ def insertFoodPreference(request):
 def deleteFoodPreference(request):
     try:
         payload = tokenCheck(request)
-        Preference.objects.filter(id__in=request.data['id']).delete()
+        Preference.objects.filter(id=request.data['id']).delete()
         return Response(status=status.HTTP_200_OK)
 
     except Exception as e:
