@@ -21,12 +21,11 @@ from django.http import JsonResponse
 import jwt, datetime
 import bcrypt
 import traceback
+
 def saveTeamAndMenu():
     team_list = Team.objects.all()
     serializer = TeamSerializer(team_list, many=True)
     insertTeamAndMenu(serializer.data, 0, 0)
-    # print('efjoiewjfoi')
-    # aligo()
 
 @api_view(['GET'])
 def teamList(request):
@@ -37,7 +36,11 @@ def teamList(request):
 
 @api_view(['GET'])
 def todayCafeteria(request): # 해결
-    return JsonResponse({'today_cafetria': crawling().split(', ')}, json_dumps_params={'ensure_ascii': False}, status=200)
+    response = Response()
+    response.data = {
+        'today_cafetria': crawling().split(', ')
+    }
+    return response
 
 
 def tokenCheck(request):
