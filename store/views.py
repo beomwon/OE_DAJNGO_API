@@ -32,8 +32,16 @@ def ratingList(request):
     try:
         payload = tokenCheck(request)
         my_lating_list = Rating.objects.filter(user_id=payload['id'])
-        serializer = RatingSerializer(my_lating_list, many=True)
-        return Response(serializer.data)
+        list_serializer = RatingSerializer(my_lating_list, many=True)
+
+        for data in list_serializer.data:
+            store_info = Info.objects.filter(id=data['store_id'])
+            store_serializer = InfoSerializer(store_info, many=True)
+            # store_serializer.data[0]['aver_rating']
+            # del store_serializer.data[0]['aver_rating']
+            data.update(store_serializer.data[0])
+
+        return Response(list_serializer.data)
 
     except Exception as e:
         return JsonResponse({'error': str(traceback.format_exc())})
