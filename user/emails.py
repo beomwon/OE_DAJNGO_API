@@ -5,8 +5,8 @@ import random
 
 def verificationCode(email):
     try:
-        my_mail = "beomwon@naver.com" # 나의 이메일 (보내는 사람 이메일 주소) ***
-        pwd = "dlqjadnjs"  # 위의 이메일 계정 비밀번호 ***
+        my_mail = "23r23r wgfaer gaegyh 3a4yt@naver.com" # 나의 이메일 (보내는 사람 이메일 주소) ***
+        pwd = "asdfaeswwf awefg wg32t "  # 위의 이메일 계정 비밀번호 ***
         to_mail = email  # 받는 사람 이메일 주소 ***
 
         # 메일 제목/ 받는 사람/ 보내는 사람 정보
