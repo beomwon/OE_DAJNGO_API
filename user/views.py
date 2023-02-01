@@ -172,7 +172,7 @@ def insertMustFood(request):
         request.data['date'] = int(str(datetime.date.today()).replace('-',''))
 
         try: 
-            q = Q(user_id=payload['id']) & Q(date=request.data['date'])
+            q = Q(user_id=payload['id']) & Q(date=request.data['date']) & Q(preference=request.data['preference'])
             MustFood.objects.filter(q).delete()
         except: 
             pass
