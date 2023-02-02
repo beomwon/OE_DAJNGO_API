@@ -1,5 +1,5 @@
 ## (주)비바라비다 점심메이트, 점심메뉴추천 어플리케이션 '오슐랭' 백엔드 API
-<img src="https://img.shields.io/badge/AWS EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white"> <img src="https://img.shields.io/badge/DJANGO-092E20?style=for-the-badge&logo=Django&logoColor=white">
+<img src="https://img.shields.io/badge/ -FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white"> <img src="https://img.shields.io/badge/DJANGO-092E20?style=for-the-badge&logo=Django&logoColor=white">
 ## 프로젝트
 - 2023.1.12 ~ 
 - AWS와 CLOUDTYPE서버를 이용하여 DB를 관리하고, BACKEND를 배포함.
