@@ -33,12 +33,18 @@ def ratingList(request):
         payload = tokenCheck(request)
         my_lating_list = Rating.objects.filter(user_id=payload['id'])
         serializer = RatingSerializer(my_lating_list, many=True)
+
+        result = []
         for data in serializer.data:
+            if data['store_id'] == 0:
+                continue
             store_info = Info.objects.filter(id=data['store_id'])
             store_serializer = InfoSerializer(store_info, many=True)
             data.update(store_serializer.data[0])
-        return Response(serializer.data)
-
+            result.append(data)
+        
+        return Response(result)
+        
     except Exception as e:
         print({'error': str(traceback.format_exc())})
         return JsonResponse({'error': str(traceback.format_exc())})
