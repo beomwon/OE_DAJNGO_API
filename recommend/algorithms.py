@@ -17,14 +17,15 @@ import requests, json
 from django.db.models import Q
 
 def insertTeamAndMenu(serializer_data, team_algo_num, menu_algo_num):
-    teams = recommendTeam(serializer_data, team_algo_num)
-    print('팀이 선정되었습니다.')
-    menus = recommendMenu(teams, menu_algo_num)
-    print('팀별 메뉴가 선정되었습니다.')
-    for team, menu in zip(teams, menus):
-        rm.Team(team=','.join(team), menu=','.join(menu),date=int(str(datetime.date.today()).replace('-',''))).save()
-    print('DB에 저장되었습니다.')
-    aligo(teams)
+#     일단 클라우드타입이 고정ip를 받을때까지 수동으로 돌려야 할듯
+#     teams = recommendTeam(serializer_data, team_algo_num)
+#     print('팀이 선정되었습니다.')
+#     menus = recommendMenu(teams, menu_algo_num)
+#     print('팀별 메뉴가 선정되었습니다.')
+#     for team, menu in zip(teams, menus):
+#         rm.Team(team=','.join(team), menu=','.join(menu),date=int(str(datetime.date.today()).replace('-',''))).save()
+#     print('DB에 저장되었습니다.')
+#     aligo(teams)
     print('알리고 문자가 전송되었습니다.')
    
 def recommendTeam(serializer_data, way): #개인이 누구와 몇번씩 팀을 했는지 알려주는 dict, 팀의 갯수를 알려주는 number, 추천 알고리즘 번호 (0,1,2)
