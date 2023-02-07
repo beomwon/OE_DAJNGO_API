@@ -85,11 +85,8 @@ def checkTodayRating(request): #### 없으면 -> store.models.Rating.DoesNotExis
     # q = Q(user_id=payload['id']) & Q(user_id=payload['id'])
     q = Q(user_id=payload['id']) & Q(date=int(str(datetime.date.today()).replace('-','')))
     print(payload['id'], int(str(datetime.date.today()).replace('-','')))
-    try:
-        check = Rating.objects.get(q)
-        return JsonResponse({'result': 1})
-    except:
-        return JsonResponse({'result': 0})
+    check = Rating.objects.filter(q)
+    return JsonResponse({'result': 1 if len(check) > 0 else 0})
 
 @api_view(['DELETE'])
 def deleteRating(request):
