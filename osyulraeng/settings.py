@@ -90,6 +90,11 @@ DATABASES = {
         'HOST': DATABASES_HOST,
         'PASSWORD': DATABASES_PASSWORD,
         'PORT': DATABASES_PORT,
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',
+            'use_unicode': True,
+        },
     }
 }
 
