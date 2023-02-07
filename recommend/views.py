@@ -27,8 +27,7 @@ def saveTeamAndMenu():
     serializer = TeamSerializer(team_list, many=True)
 
     week = ['월','화','수','목','금','토','일'][datetime.datetime.today().weekday()]
-    
-    # insertTeamAndMenu(serializer.data, 0, 1) # 랜덤
+    insertTeamAndMenu(serializer.data, 0, 1) # 랜덤
     # if week in ['월','목']:
     #     print(f'오늘은 {week}요일이므로 부서별 인원으로 팀이 선택됩니다.')
     #     insertTeamAndMenu(serializer.data, 1, 1) # 부서별
