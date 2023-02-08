@@ -38,9 +38,11 @@ def ratingList(request):
         for data in serializer.data:
             if data['store_id'] == 0:
                 continue
+            temp = data['id']
             store_info = Info.objects.filter(id=data['store_id'])
             store_serializer = InfoSerializer(store_info, many=True)
             data.update(store_serializer.data[0])
+            data['id'] = temp
             result.append(data)
         
         return Response(result)
