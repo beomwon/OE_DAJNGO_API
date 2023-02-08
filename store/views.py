@@ -44,7 +44,8 @@ def ratingList(request):
             data.update(store_serializer.data[0])
             data['id'] = temp
             result.append(data)
-        
+            
+        result = result[::-1]
         return Response(result)
         
     except Exception as e:
