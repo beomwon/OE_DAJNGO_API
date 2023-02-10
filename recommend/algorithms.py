@@ -233,9 +233,18 @@ def makeDict(data):
                 dict[v] = {k: 1 for k in temp}
 
     return dict
+def make_server_token(ALIGO_APIKEY, ALIGO_USERID):
+    basic_send_url = 'https://kakaoapi.aligo.in/akv10/token/create/30/s/'
+
+    sms_data={'apikey': ALIGO_APIKEY,'userid': ALIGO_USERID}
+    create_token_response = requests.post(basic_send_url, data=sms_data).json()['token']
+
+    return create_token_response
 
 def aligo(teams):
     school_food = crawling()
+    token = make_server_token(settings.ALIGO_APIKEY, settings.ALIGO_USERID)
+    
     print(school_food)
     if school_food != '오늘의 학식정보가 없습니다.':
         school_food = school_food.replace(' ', '')
@@ -258,7 +267,7 @@ def aligo(teams):
                 # print('mi["menu"]:', mi['menu'])
                 sms_data = {
                             'apikey': settings.ALIGO_APIKEY,
-                            'token': settings.ALIGO_TOKEN,
+                            'token': token,
                             'userid': settings.ALIGO_USERID,
                             'sender': settings.ALIGO_SENDER,
                             'senderkey': settings.ALIGO_SENDERKEY,
