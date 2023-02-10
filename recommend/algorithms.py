@@ -13,6 +13,7 @@ from user import serializers as us
 from bs4 import BeautifulSoup
 import datetime
 import requests, json
+import traceback
 
 from django.db.models import Q
 
@@ -280,8 +281,8 @@ def aligo(teams):
                             }
                 
                 alimtalk_send_response = requests.post(basic_send_url, data=sms_data)
-    except:
-        pass
+    except Exception as e:
+        print({'error': str(traceback.format_exc())})
 
 def messageInfo(user_id):
     my_list = rm.Team.objects.filter(date=int(str(datetime.date.today()).replace('-','')))
