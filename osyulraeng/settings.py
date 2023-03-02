@@ -5,7 +5,6 @@ from corsheaders.defaults import default_headers
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['https://port-0-osyulraeng-dw80hv2bldsd8fl1.sel3.cloudtype.app/']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
@@ -19,8 +18,7 @@ def get_secret(setting, secrets=secrets):
         error_msg = "Set the {} environment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
         
-# ALLOWED_HOSTS = ['https://port-0-osyulraeng-dw80hv2bldsd8fl1.sel3.cloudtype.app/']
-# ALLOWED_HOSTS = [get_secret("HOST_NAME")]
+ALLOWED_HOSTS = [get_secret("HOST_NAME")]
 # ALLOWED_HOSTS = []
 
 SECRET_KEY = get_secret("DJANGO_SECERT_KEY")
