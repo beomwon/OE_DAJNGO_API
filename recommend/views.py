@@ -1,33 +1,23 @@
 # -*- coding: utf-8 -*-
 import requests
-from requests_toolbelt import MultipartEncoder
-import json
-
-from django.shortcuts import render
-from django.http import JsonResponse
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework.exceptions import AuthenticationFailed
 from rest_framework import status
 
 from .serializers import TeamSerializer
 from .models import Team
 from .algorithms import crawling, insertTeamAndMenu, aligo
 from osyulraeng import settings
-from django.shortcuts import render
-from django.http import JsonResponse
-
 import jwt, datetime
-import bcrypt
-import traceback
+from bs4 import BeautifulSoup as bs
+import re
 
 def saveTeamAndMenu():
-    team_list = Team.objects.all()
-    serializer = TeamSerializer(team_list, many=True)
-
-    week = ['월','화','수','목','금','토','일'][datetime.datetime.today().weekday()]
-    insertTeamAndMenu(serializer.data, 0, 1) # 랜덤
+    if isHoliday():
+        team_list = Team.objects.all()
+        serializer = TeamSerializer(team_list, many=True)
+        insertTeamAndMenu(serializer.data, 0, 1) # 랜덤
     
     # if week in ['월','목']:
     #     print(f'오늘은 {week}요일이므로 부서별 인원으로 팀이 선택됩니다.')
@@ -63,3 +53,20 @@ def tokenCheck(request):
     if not token: raise Response(status=status.HTTP_401_UNAUTHORIZED)
     try: return jwt.decode(token, settings.JWT_KEY, algorithms=['HS256'])
     except jwt.ExpiredSignatureError: raise Response(status=status.HTTP_401_UNAUTHORIZED)
+
+def isHoliday():
+    today = datetime.datetime.today()
+    url = settings.HOLIDAY_URL
+    params ={
+            'serviceKey' : settings.HOLIDAY_KEY, 
+            'solYear' : str(today.year), 
+            'solMonth' : str(f'{today.month:02d}') 
+            }
+
+    response = requests.get(url, params=params)
+    if str(today).split()[0].replace('-','') in re.findall('\<locdate\>(\d+)\<\/locdate\>', str(bs(response.content, 'html.parser'))):
+        return True
+    if ['월','화','수','목','금','토','일'][today.weekday()] in ['토','일']:
+        return True
+    
+    return False
