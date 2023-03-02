@@ -34,6 +34,8 @@ DATABASES_HOST = get_secret("DATABASES_HOST")
 DATABASES_PASSWORD = get_secret("DATABASES_PASSWORD")
 DATABASES_PORT = get_secret("DATABASES_PORT") 
 JWT_KEY = get_secret("JWT_KEY")
+HOLIDAY_URL = get_secret("HOLIDAY_URL")
+HOLIDAY_KEY = get_secret("HOLIDAY_KEY")
 
 # Application definition
 INSTALLED_APPS = [
