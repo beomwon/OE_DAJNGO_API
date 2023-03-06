@@ -58,15 +58,15 @@ def isHoliday():
     today = datetime.datetime.today()
     url = settings.HOLIDAY_URL
     params ={
-            'serviceKey' : settings.HOLIDAY_KEY, 
-            'solYear' : str(today.year), 
-            'solMonth' : str(f'{today.month:02d}') 
+                'serviceKey' : settings.HOLIDAY_KEY, 
+                'solYear' : str(today.year), 
+                'solMonth' : str(f'{today.month:02d}') 
             }
 
     response = requests.get(url, params=params)
     if str(today).split()[0].replace('-','') in re.findall('\<locdate\>(\d+)\<\/locdate\>', str(bs(response.content, 'html.parser'))):
-        return True
+        return False
     if ['월','화','수','목','금','토','일'][today.weekday()] in ['토','일']:
-        return True
+        return False
     
-    return False
+    return True
