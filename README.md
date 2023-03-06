@@ -1,6 +1,6 @@
 ## (주)비바라비다 점심메이트, 점심메뉴추천 어플리케이션 '오슐랭' 백엔드 API
 - LANGUAGE : PYTHON
-- Framework: Django
+- Framework : Django
 - D      B : AWS ec2, maria DB
 - A   P  I : 한국천문연구원 특일 정보 API, ALIGO API
 
